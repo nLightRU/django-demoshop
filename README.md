@@ -1,2 +1,3 @@
 # django-shop
- E-commerce web app for studying Django framework
+
+E-commerce web app for studying Django framework
