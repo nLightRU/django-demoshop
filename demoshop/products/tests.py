@@ -1,5 +1,5 @@
 from django.test import TestCase
 
 
-class TestProduct(TestCase):
+class TestPhone(TestCase):
     pass

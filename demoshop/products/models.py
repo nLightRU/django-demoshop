@@ -11,10 +11,14 @@ class Brand(models.Model):
 
 
 class Phone(models.Model):
-    phone_model = models.CharField(max_length=20, blank=True)
+    model = models.CharField(max_length=20, blank=True)
     series = models.CharField(max_length=20, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     brand_id = models.ForeignKey(Brand, on_delete=models.CASCADE)
+
+    ram = models.IntegerField(blank=True, null=True)
+    color = models.CharField(max_length=20, blank=True, null=True)
+
     quantity = models.IntegerField()
     price = models.DecimalField(max_digits=10, decimal_places=2, default=200000.00)
 
@@ -25,4 +29,25 @@ class Phone(models.Model):
             raise ValidationError("Price can't be negative")
 
     def __str__(self) -> str:
-        return f'{self.series} {self.phone_model}'
+        return f'{self.series} {self.model}'
+
+
+class SmartWatch(models.Model):
+    model = models.CharField(max_length=20, blank=True)
+    series = models.CharField(max_length=20, blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
+    brand_id = models.ForeignKey(Brand, on_delete=models.CASCADE)
+
+    color = models.CharField(max_length=20, blank=True, null=True)
+
+    quantity = models.IntegerField()
+    price = models.DecimalField(max_digits=10, decimal_places=2, default=200000.00)
+
+    def clean(self):
+        if self.quantity < 0:
+            raise ValidationError("Amount can't be negative")
+        elif self.price < 0:
+            raise ValidationError("Price can't be negative")
+
+    def __str__(self) -> str:
+        return f'{self.series} {self.model}'
