@@ -1,4 +1,5 @@
 from django.http import HttpResponse
+from django.shortcuts import render
 from .models import Brand, Phone
 
 
@@ -10,25 +11,32 @@ def phones_brand(request, brand):
     brand = brand.title()
     chosen_brand = Brand.objects.filter(name=brand)[0]
     phones_rows = Phone.objects.filter(brand_id=chosen_brand.id)
-    phones_names = [str(phone) for phone in phones_rows]
-    body = '<br>'.join(phones_names)
-    resp = 'User: <br>' + body
 
-    return HttpResponse(resp)
+    context = {
+        'search': f'Смартфоны {brand}',
+        'results': phones_rows
+    }
+
+    return render(request, 'search_template.html', context)
 
 
 def phones(request):
-    phones_ = Phone.objects.all()
-    series = []
-    for phone in phones_:
-        series.append(phone.series)
+    phones_rows = Phone.objects.all()
 
-    resp = ', '.join(series)
-    return HttpResponse(resp)
+    context = {
+        'search': 'Смартфоны',
+        'results': phones_rows
+    }
+
+    return render(request, 'search_template.html', context)
 
 
 def products(request):
     phones_rows = Phone.objects.all()
-    phones_names = [str(phone) for phone in phones_rows]
-    resp = ', '.join(phones_names)
-    return HttpResponse(resp)
+
+    context = {
+        'search': 'Смартфоны',
+        'results': phones_rows
+    }
+
+    return render(request, 'search_template.html', context)

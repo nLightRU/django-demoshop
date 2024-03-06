@@ -1,5 +1,6 @@
 from django.test import TestCase
-from .models import Brand, SmartWatch
+from .models import Brand, Phone
+
 
 class TestPhone(TestCase):
     pass
