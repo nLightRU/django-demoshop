@@ -11,7 +11,9 @@ def phones_brand(request, brand):
     chosen_brand = Brand.objects.filter(name=brand)[0]
     phones_rows = Phone.objects.filter(brand_id=chosen_brand.id)
     phones_names = [str(phone) for phone in phones_rows]
-    resp = ', '.join(phones_names)
+    body = '<br>'.join(phones_names)
+    resp = 'User: <br>' + body
+
     return HttpResponse(resp)
 
 

@@ -1,7 +1,6 @@
 from django.contrib import admin
 
-from .models import Brand, Phone, SmartWatch
+from .models import Brand, Phone
 
 admin.site.register(Brand)
 admin.site.register(Phone)
-admin.site.register(SmartWatch)
