@@ -16,9 +16,9 @@
                         <b>{{res.price}}</b>
                     </p>
                 </div>
-                <button class="btn btn-primary">
+                <a class="btn btn-primary" href="{% url 'product' res.id %}">
                     Купить
-                </button>
+                </a>
             </div>
         </div>
     {% endfor %}

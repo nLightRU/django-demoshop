@@ -10,5 +10,6 @@ urlpatterns = [
      path('logout', views.logout_user, name='logout'),
      path('products/phones/<brand>', views.phones_brand, name='phones_by_brand'),
      path('products/phones', views.phones, name='smartphones'),
+     path('products/<int:product_id>', views.product, name='product'),
      path('products/', views.products)
 ]

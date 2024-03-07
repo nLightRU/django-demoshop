@@ -39,6 +39,15 @@ def register_user(request):
     return render(request, 'register.html', {})
 
 
+def product(request, product_id: int):
+    product_row = Phone.objects.get(pk=product_id)
+
+    context = {
+        'product_header': f'{product_row.series} {product_row.model}'
+    }
+
+    return render(request, 'product.html', context)
+
 def phones_brand(request, brand):
     brand = brand.title()
     chosen_brand = Brand.objects.filter(name=brand)[0]
