@@ -11,6 +11,10 @@ def about(request):
     return render(request, 'about.html', {})
 
 
+def register_user(request):
+    return render(request, 'register.html', {})
+
+
 def phones_brand(request, brand):
     brand = brand.title()
     chosen_brand = Brand.objects.filter(name=brand)[0]
