@@ -12,22 +12,26 @@
 
 
 <div class="col-6 offset-md-3">
-    <form class="px-8 py-3">
+    <form class="px-8 py-3" method="POST" action="{% url 'register' %}">
         <div class="form-group">
             <label for="registerFirstName">Имя</label>
-            <input type="email" class="form-control" id="registerFirstName">
+            <input type="text" name="first_name" class="form-control" id="registerFirstName">
         </div>
         <div class="form-group">
             <label for="registerLastName">Фамилия</label>
-            <input type="email" class="form-control" id="registerLastName">
+            <input type="text" name="last_name" class="form-control" id="registerLastName">
         </div>
         <div class="form-group">
             <label for="registerEmail">Почта</label>
-            <input type="email" class="form-control" id="registerEmail">
+            <input type="email" name="email" class="form-control" id="registerEmail">
+        </div>
+        <div class="form-group">
+            <label for="registerUsername">Логин</label>
+            <input type="text" name="username" class="form-control" id="registerUsername">
         </div>
         <div class="form-group">
             <label for="registerPassword">Пароль</label>
-            <input type="password" class="form-control" id="registerPassword">
+            <input type="password" name="password" class="form-control" id="registerPassword">
         </div>
         <button type="submit" class="btn btn-primary">Зарегестрироваться</button>
     </form>

@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.auth import login, logout, authenticate
+from django.contrib import messages
 
 from .models import Brand, Phone
 
@@ -9,6 +11,28 @@ def index(request):
 
 def about(request):
     return render(request, 'about.html', {})
+
+
+def login_user(request):
+    if request.method == 'POST':
+        username = request.POST.get('username', '')
+        password = request.POST.get('password', '')
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            messages.success(request, "Успешно")
+            return redirect('home')
+        else:
+            messages.error(request, "Неправильный логин или пароль")
+            return redirect('home')
+
+    else:
+        return redirect('home')
+
+
+def logout_user(request):
+    logout(request)
+    return redirect('home')
 
 
 def register_user(request):
