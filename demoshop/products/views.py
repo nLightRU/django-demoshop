@@ -4,7 +4,7 @@ from .models import Brand, Phone
 
 
 def index(request):
-    return HttpResponse('Hello from products')
+    return render(request, 'index.html', {})
 
 
 def phones_brand(request, brand):
