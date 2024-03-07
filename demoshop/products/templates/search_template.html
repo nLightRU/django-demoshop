@@ -7,16 +7,17 @@
     {% for res in results %}
         <div class="col-sm-3">
             <div class="card h-100">
-                <img class="card-img-top" src="{{res.image.url}}"/>
+                <!-- <img class="card-img-top" src="{{res.image.url}}" height="320px"/> -->
+
                 <div class="card-body">
                     <p class="card-text">
-                        {{res}}
+                        <h5>{{res}}</h5>
                         <br>
-                        {{res.price}}
+                        <b>{{res.price}}</b>
                     </p>
                 </div>
                 <button class="btn btn-primary">
-                    В корзину
+                    Купить
                 </button>
             </div>
         </div>
