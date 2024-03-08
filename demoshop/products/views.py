@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
+from django.contrib.auth.models import User
 
 from .models import Brand, Phone
 
@@ -39,6 +40,17 @@ def register_user(request):
     return render(request, 'register.html', {})
 
 
+def user_profile(request, user_id):
+    u = User.objects.get(pk=user_id)
+
+    context = {
+        'user': u
+    }
+
+    if u is not None:
+        return render(request, 'profile.html', context)
+
+
 def product(request, product_id: int):
     product_row = Phone.objects.get(pk=product_id)
 
@@ -51,6 +63,7 @@ def product(request, product_id: int):
     }
 
     return render(request, 'product.html', context)
+
 
 def phones_brand(request, brand):
     brand = brand.title()
