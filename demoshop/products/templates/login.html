@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-6">
+        <h1>Регистрация</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <form class="px-8 py-3" method="POST" action="{% url 'login' %}">
+
+            {% csrf_token %}
+            <div class="mb-3">
+                <div class="form-group">
+                    <label for="registerUsername">Логин</label>
+                    <input type="text" name="username" class="form-control" id="registerUsername">
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <div class="form-group">
+                    <label for="registerPassword">Пароль</label>
+                    <input type="password" name="password" class="form-control" id="registerPassword">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Войти</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

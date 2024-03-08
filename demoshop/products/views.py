@@ -15,19 +15,19 @@ def about(request):
 
 def login_user(request):
     if request.method == 'POST':
-        username = request.POST.get('username', '')
-        password = request.POST.get('password', '')
+        username = request.POST.get('username')
+        password = request.POST.get('password')
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
             messages.success(request, "Успешно")
-            return redirect('home')
+            return redirect('smartphones')
         else:
             messages.error(request, "Неправильный логин или пароль")
-            return redirect('home')
+            return redirect('login')
 
     else:
-        return redirect('home')
+        return render(request, 'login.html', {})
 
 
 def logout_user(request):
@@ -43,7 +43,11 @@ def product(request, product_id: int):
     product_row = Phone.objects.get(pk=product_id)
 
     context = {
-        'product_header': f'{product_row.series} {product_row.model}'
+        'product_header': f'{product_row.series} {product_row.model}',
+        'image_url': product_row.image.url,
+        'product_stats': [{'name': 'abc', 'value': 'AWESOME'},
+                           {'name': 'abc', 'value': 'AWESOME'}
+                           ]
     }
 
     return render(request, 'product.html', context)
