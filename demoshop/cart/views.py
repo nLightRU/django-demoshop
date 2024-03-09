@@ -17,6 +17,8 @@ def cart_page(request):
     products = [Phone.objects.get(pk=key) for key in context['cart']]
     if len(products) != 0:
         context['products'] = products
+        for p in products:
+            context['total_price'] += p.price
 
     return render(request, 'cart.html', context)
 

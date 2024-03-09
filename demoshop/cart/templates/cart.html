@@ -13,11 +13,27 @@
                 </div>
             {%else%}
             <div class="mb-3">
-                <ul>
                     {%for p in products%}
-                        <li>{{p}}</li>
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-4">
+                                <img src="{{p.image.url}}" class="img-fluid rounded-start" width="150px" height="150px">
+                            </div>
+                            <div class="col-md-5">
+                                <h5 class="card-title"><a href="{% url 'product' p.id %}">{{p}}</a></h5>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-secondary">
+                                    Удалить
+                                </button>
+                            </div>
+                        </div>
                     {% endfor %}
-                </ul>
+                <h5>Общая стоимость</h5>
+                <p>
+                    <strong>
+                        {{total_price}} руб.
+                    </strong>
+                </p>
                 <button type="button" class="btn btn-primary">
                     Оплатить
                 </button>
