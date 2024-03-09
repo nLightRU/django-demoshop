@@ -1,6 +1,6 @@
 import json
 
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import JsonResponse
 
 from products.models import Phone
@@ -8,7 +8,16 @@ from .cart import Cart
 
 
 def cart_page(request):
-    context = {}
+    context = {
+        'cart': Cart(request).cart,
+        'products': None,
+        'total_price': 0,
+    }
+
+    products = [Phone.objects.get(pk=key) for key in context['cart']]
+    if len(products) != 0:
+        context['products'] = products
+
     return render(request, 'cart.html', context)
 
 
@@ -30,3 +39,11 @@ def cart_update(request):
 
 def cart_delete(request):
     pass
+
+
+def cart_reset(request):
+    if request.method == 'POST':
+        cart = Cart(request)
+        cart.reset()
+
+        return redirect('/cart')

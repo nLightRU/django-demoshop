@@ -7,14 +7,53 @@
     </div>
     <div class="row">
         <div class="col-md-6">
+            {%if products is None%}
+                <div class="mb-3">
+                    <p>Пусто</p>
+                </div>
+            {%else%}
             <div class="mb-3">
-                Корзина
-            </div>
-            <div class="mb-3">
+                <ul>
+                    {%for p in products%}
+                        <li>{{p}}</li>
+                    {% endfor %}
+                </ul>
                 <button type="button" class="btn btn-primary">
                     Оплатить
                 </button>
+                <button type="button"
+                class="btn btn-secondary"
+                data-bs-toggle="modal"
+                data-bs-target="#resetCartModal">
+                    Очистить корзину
+                </button>
+
+
+                <div class="modal fade" id="resetCartModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Очистить корзину</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Вы уверены, что хотите очистить корзину?
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                                <form action="{% url 'cart_reset'%}" method="POST">
+                                    {%csrf_token%}
+                                    <button type="submit" class="btn btn-primary">Очистить</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+            {% endif %}
+
+
+
         </div>
     </div>
 </div>
