@@ -6,7 +6,6 @@ function addToCart() {
 
     const url = '/cart/add';
     const csrf = document.querySelector('[name=csrfmiddlewaretoken]').value;
-    console.log(csrf);
 
     const json = JSON.stringify(
         {
@@ -25,8 +24,8 @@ function addToCart() {
         if(response.ok){
             let cartCount = document.getElementById('cart-count');
             const count = parseInt(cartCount.textContent);
-            console.log((count + 1).toString())
-//            cardCount.textContent = (count + 1).toString();
+
+//            cartCount.textContent = (count + 1).toString();
         }
     });
 }

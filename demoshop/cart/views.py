@@ -1,7 +1,10 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+import json
 
-from .context_processors import cart
+from django.shortcuts import render, get_object_or_404
+from django.http import JsonResponse
+
+from products.models import Phone
+from .cart import Cart
 
 
 def cart_page(request):
@@ -10,8 +13,15 @@ def cart_page(request):
 
 
 def cart_add(request):
-    c = cart(request)
-    return HttpResponse('')
+    cart = Cart(request)
+
+    product_id = json.loads(request.body)['product_id']
+
+    product = get_object_or_404(Phone, id=product_id)
+
+    cart.add(product=product)
+
+    return JsonResponse({'status': 'ok'})
 
 
 def cart_update(request):
