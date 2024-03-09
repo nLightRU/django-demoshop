@@ -23,8 +23,8 @@ function addToCart() {
         body: json
     }).then(function (response){
         if(response.ok){
-            let cardCount = document.getElementById('cart-count');
-            const count = parseInt(cardCount.textContent);
+            let cartCount = document.getElementById('cart-count');
+            const count = parseInt(cartCount.textContent);
             console.log((count + 1).toString())
 //            cardCount.textContent = (count + 1).toString();
         }

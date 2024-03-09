@@ -1,4 +1,7 @@
 from django.shortcuts import render
+from django.http import HttpResponse
+
+from .context_processors import cart
 
 
 def cart_page(request):
@@ -7,7 +10,8 @@ def cart_page(request):
 
 
 def cart_add(request):
-    pass
+    c = cart(request)
+    return HttpResponse('')
 
 
 def cart_update(request):
