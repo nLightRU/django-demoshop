@@ -57,6 +57,7 @@ def product(request, product_id: int):
     context = {
         'product_header': f'{product_row.series} {product_row.model}',
         'image_url': product_row.image.url,
+        'product_id': product_row.id,
         'product_stats': [{'name': 'abc', 'value': 'AWESOME'},
                            {'name': 'abc', 'value': 'AWESOME'}
                            ]

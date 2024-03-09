@@ -7,17 +7,24 @@
     </div>
     <div class="row">
         <div class="col-md-6">
-            <img src="{{image_url}}" alt="">
+            <img src="{{image_url}}" width="640px">
         </div>
-        <div class="col-md-6">
+        <div class="col-sm-3">
             {% for stat in product_stats%}
             <h5>{{stat.name}}</h5>
             <p>{{stat.value}}</p>
+            {% csrf_token %}
             {%endfor%}
-            <button type="button" class="btn btn-primary">
+            <button id='btn-add-cart'
+                    type="button"
+                    value="{{product_id}}"
+                    class="btn btn-primary"
+                    onclick="addToCart()"
+            >
                 В корзину
             </button>
         </div>
     </div>
 </div>
+<script src="{% static 'js/cart.js'%}"> </script>
 {%endblock%}
