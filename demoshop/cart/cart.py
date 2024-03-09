@@ -20,3 +20,6 @@ class Cart:
             self.cart[product_id] = {'price': str(product.price)}
 
         self.session.modified = True
+
+    def count(self):
+        return len(self.cart.keys())

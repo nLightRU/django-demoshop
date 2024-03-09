@@ -21,7 +21,7 @@ def cart_add(request):
 
     cart.add(product=product)
 
-    return JsonResponse({'status': 'ok'})
+    return JsonResponse({'cart_count': cart.count()})
 
 
 def cart_update(request):
