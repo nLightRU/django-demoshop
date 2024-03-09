@@ -31,28 +31,6 @@
                         <a class="nav-link" href="{% url 'login' %}">
                             Войти
                         </a>
-<!--                        <div class="dropdown-menu">-->
-<!--                            <form class="px-4 py-4" method="POST" action="{% url 'login' %}">-->
-<!--                                <div class="mb-3">-->
-<!--                                    <label for="username" class="form-label">Логин</label>-->
-<!--                                    <input type="email" name="username" class="form-control" id="username" placeholder="Введите логин">-->
-<!--                                </div>-->
-<!--                                <div class="mb-3">-->
-<!--                                    <label for="password" class="form-label">Пароль</label>-->
-<!--                                    <input type="password" name="password" class="form-control" id="password" placeholder="Введите пароль">-->
-<!--                                </div>-->
-<!--                                <div class="mb-3">-->
-<!--                                    <div class="form-check">-->
-<!--                                        <input type="checkbox" class="form-check-input" id="dropdownCheck">-->
-<!--                                        <label class="form-check-label" for="dropdownCheck">Запомнить меня</label>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                                <button type="submit" class="btn btn-primary">Войти</button>-->
-<!--                            </form>-->
-<!--                            <div class="dropdown-divider"></div>-->
-<!--                            <a class="dropdown-item" href="{% url 'register' %}">Регистрация</a>-->
-<!--                            <a class="dropdown-item" href="#">Забыли пароль?</a>-->
-<!--                        </div>-->
                     </li>
                 {% endif %}
                 <li class="nav-item">
@@ -62,10 +40,11 @@
                     <a class="nav-link" href="{% url 'about' %}">О нас</a>
                 </li>
             </ul>
-            <form class="d-flex">
-                <input class="form-control me-sm-2" type="search" placeholder="Search">
-                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-            </form>
+            <div class="float-end">
+                <a class="btn btn-secondary" href="{% url 'cart_summary' %}">
+                    Корзина <span class="badge-dark" id="cart-count">0</span>
+                </a>
+            </div>
         </div>
     </div>
 </nav>
