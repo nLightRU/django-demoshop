@@ -54,13 +54,23 @@ def user_profile(request, user_id):
 def product(request, product_id: int):
     product_row = Phone.objects.get(pk=product_id)
 
+    stats = [
+        {'name': 'Экран', 'value': str(product_row.display_size) + '"'},
+        {'name': 'Процессор', 'value': product_row.cpu},
+        {'name': 'Объём внутренней памяти', 'value': str(product_row.memory) + ' Гб'},
+        {'name': 'Объём оперативной памяти', 'value': str(product_row.ram) + ' Гб'},
+        {'name': 'Цвет', 'value': product_row.color},
+    ]
+
+    if product_row.description is not None:
+        stats.append({'name': 'Описание', 'value': product_row.description},)
+
+
     context = {
-        'product_header': f'{product_row.series} {product_row.model}',
+        'product_header': f'{product_row.model} {product_row.memory} Гб',
         'image_url': product_row.image.url,
         'product_id': product_row.id,
-        'product_stats': [{'name': 'abc', 'value': 'AWESOME'},
-                           {'name': 'abc', 'value': 'AWESOME'}
-                           ]
+        'product_stats': stats
     }
 
     return render(request, 'product.html', context)
@@ -83,7 +93,7 @@ def phones(request):
     phones_rows = Phone.objects.all()
 
     context = {
-        'search': 'Смартфоны',
+        'search': 'Все смартфоны',
         'results': phones_rows
     }
 

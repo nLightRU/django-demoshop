@@ -12,13 +12,14 @@ class Brand(models.Model):
 
 class Phone(models.Model):
     model = models.CharField(max_length=20, blank=True)
-    series = models.CharField(max_length=20, blank=True, null=True)
     description = models.TextField(blank=True, default='', null=True)
     brand_id = models.ForeignKey(Brand, on_delete=models.CASCADE)
-
     image = models.ImageField(upload_to='uploads/phone/', null=True)
 
+    display_size = models.DecimalField(max_digits=3, decimal_places=1, blank=True, null=True)
+    cpu = models.CharField(blank=True, null=True)
     memory = models.IntegerField(default=64)
+    ram = models.IntegerField(default=4)
     color = models.CharField(max_length=20, default='black')
 
     quantity = models.IntegerField()
@@ -33,4 +34,4 @@ class Phone(models.Model):
             raise ValidationError("Memory can't be negative")
 
     def __str__(self) -> str:
-        return f'{self.series} {self.model} {self.memory} Gb {self.color.title()}'
+        return f'{self.model} {self.memory} Gb {self.color.title()}'

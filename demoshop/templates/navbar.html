@@ -8,11 +8,12 @@
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Категории</a>
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Смартфоны</a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="{% url 'smartphones' %}">Смартфоны</a>
-                        <a class="dropdown-item disabled" href="#">Смартчасы (скоро)</a>
-                        <a class="dropdown-item disabled" href="#">Наушники (скоро)</a>
+                        <a class="dropdown-item" href="{% url 'smartphones' %}">Все</a>
+                        <a class="dropdown-item" href="{% url 'phones_by_brand' 'apple'%}">Apple</a>
+                        <a class="dropdown-item" href="{% url 'phones_by_brand' 'samsung'%}">Samsung</a>
+                        <a class="dropdown-item" href="{% url 'phones_by_brand' 'xiaomi'%}">Xiaomi</a>
                         <!-- <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Separated link</a> -->
                     </div>
