@@ -1,3 +1,5 @@
+import decimal
+
 from django.http import request
 
 
@@ -24,8 +26,15 @@ class Cart:
 
         self.session.modified = True
 
-    def count(self):
-        return len(self.cart.keys())
+    def price(self) -> str:
+        amount = decimal.Decimal('0.0')
+        products_keys = [p for p in self.cart]
+        for key in products_keys:
+            amount += decimal.Decimal(self.cart[key]['price'])
+
+        return str(amount)
+
+
 
     def reset(self):
         products_keys = [p for p in self.cart]

@@ -3,5 +3,5 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-     path('payment_success', views.payment_succsess, name='payment_succsess'),
+     path('payment_create', views.create_payment, name='payment create'),
 ]

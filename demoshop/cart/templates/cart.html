@@ -34,7 +34,7 @@
                         {{total_price}} руб.
                     </strong>
                 </p>
-                <form action="{%url 'cart_summary'%}" method="GET">
+                <form action="{%url 'payment create'%}" method="POST">
                     {%csrf_token%}
                     <button type="submit" class="btn btn-primary">Оплатить</button>
                     <button type="button"
