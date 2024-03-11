@@ -23,8 +23,9 @@ load_dotenv(dotenv_path=Path(BASE_DIR / "../.env").resolve())
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-6%^d-k&t4x_k40r_ymn1o$#1$way3k&*_)*!j@21i$intsx39!'
+SECRET_KEY = os.environ.get('SECRET_KEY')
+YOOKASSA_SECRET_KEY = os.environ.get('YOOKASSA_SECRET_KEY')
+YOOKASSA_SHOP_ID = os.environ.get('YOOKASSA_SHOP_ID')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -36,6 +37,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'products',
     'cart',
+    'payments',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
